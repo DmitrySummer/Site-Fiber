@@ -4,13 +4,18 @@ import (
 	"dl/new-web-site/config"
 	"dl/new-web-site/pkg/logger"
 
-	"github.com/gofiber/fiber/v2"
 	"log/slog"
+
+	"github.com/gofiber/fiber/v2"
 )
 
 type PagesHandler struct {
 	router fiber.Router
 	log    *slog.Logger
+}
+
+type Categories struct {
+	Categories string
 }
 
 func NewHandler(router fiber.Router) {
@@ -40,5 +45,14 @@ func NewHandler(router fiber.Router) {
 }
 
 func (h *PagesHandler) pages(c *fiber.Ctx) error {
-	return fiber.NewError(fiber.StatusBadRequest, "Limit params didn't undefined")
+	ctg := []Categories{
+		{Categories: "Еда"},
+		{Categories: "Животные"},
+		{Categories: "Магины"},
+		{Categories: "Спорт"},
+		{Categories: "Музыка"},
+		{Categories: "Технологии"},
+	}
+
+	return c.Render("page", ctg)
 }
