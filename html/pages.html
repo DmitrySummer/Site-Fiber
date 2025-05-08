@@ -1,0 +1,11 @@
+{{ define "title" }}Главная страница{{ end }}
+
+{{ define "content" }}
+<div>
+    {{ range . }}
+        <p>{{ .Categories }}</p>
+    {{ else }}
+        <p>Категорий нет</p>
+    {{ end }}
+</div>
+{{ end }}

@@ -3,6 +3,7 @@ package pages
 import (
 	"dl/new-web-site/config"
 	"dl/new-web-site/pkg/logger"
+	"fmt"
 
 	"log/slog"
 
@@ -53,6 +54,6 @@ func (h *PagesHandler) pages(c *fiber.Ctx) error {
 		{Categories: "Музыка"},
 		{Categories: "Технологии"},
 	}
-
-	return c.Render("page", ctg)
+	fmt.Println(ctg)
+	return c.Render("pages", ctg)
 }
