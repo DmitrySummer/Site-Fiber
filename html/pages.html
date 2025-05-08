@@ -1,11 +1,30 @@
-{{ define "title" }}Главная страница{{ end }}
+{{ template "base" . }}
+
+{{ define "title" }}Категории{{ end }}
 
 {{ define "content" }}
-<div>
-    {{ range . }}
-        <p>{{ .Categories }}</p>
-    {{ else }}
-        <p>Категорий нет</p>
-    {{ end }}
-</div>
+    <style>
+        .categories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .category-box {
+            padding: 15px 25px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+    </style>
+
+    <div class="categories-container">
+        {{ range . }}
+            <div class="category-box">
+                <p>{{ .Name }}</p>
+            </div>
+        {{ else }}
+            <p>Категорий нет</p>
+        {{ end }}
+    </div>
 {{ end }}

@@ -23,10 +23,18 @@ func main() {
 		Views: engine,
 	})
 
-	// Конфигурация middleware для логирования
 	app.Use(slogfiber.New(log))
 
-	pages.NewHandler(app)
+	app.Use(func(c *fiber.Ctx) error {
+		log.Info("incoming request",
+			"method", c.Method(),
+			"path", c.Path(),
+			"ip", c.IP(),
+		)
+		return c.Next()
+	})
+
+	pages.NewHandler(app, log)
 
 	if err := app.Listen(":3000"); err != nil {
 		log.Error("failed to start server", "error", err)
