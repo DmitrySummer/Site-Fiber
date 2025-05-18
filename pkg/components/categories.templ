@@ -1,0 +1,54 @@
+package components
+
+templ Categories() {
+    @CategoriesStyle()
+    <section class="categories">
+        <div class="categories-container">
+            <ul>
+                <li>#Еда</li>
+                <li>#Животные</li>
+                <li>#Машины</li>
+                <li>#Спорт</li>
+                <li>#Музыка</li>
+                <li>#Технологии</li>
+                <li>#Прочее</li>
+            </ul>
+        </div>
+    </section>
+}
+
+templ CategoriesStyle() {
+    <style>
+        .categories {
+            padding: 20px;
+            width: 100%;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .categories h2 {
+            margin-bottom: 10px;
+            color: #5ebb8d;
+        }
+
+        .categories ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            gap: 15px;
+            width: 100%;
+        }
+
+        .categories li {
+            background: #9b0808;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-align: center;
+            color: white;
+        }
+        .categories:hover {
+            background-color: #640707;
+        }
+    </style>
+}

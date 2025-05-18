@@ -1,0 +1,21 @@
+package views
+
+import (
+
+"dl/new-web-site/pkg/layout"
+"dl/new-web-site/pkg/components"
+)
+
+
+templ Main() {
+    <main>
+        @layout.Header() {
+            @components.NewsTitle("Новости")
+            @components.CategorTitle("Категории")
+            @components.ContactTitle("Контакты")
+        }
+        @components.Categories()
+        @components.Info()
+        Main
+    </main>
+}

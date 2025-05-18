@@ -1,0 +1,23 @@
+package components
+
+templ EnterButton(hrev string) {
+    @EnterButtonStyle()
+    <a class="enter-button" href={templ.SafeURL(hrev)}>{ children... }</a>
+}
+
+templ EnterButtonStyle() {
+    <style>
+        .enter-button {
+            padding: 15px 20px;
+            background-color: #0c584e;
+            color: #FFFFFF; 
+            text-decoration: none;
+            border-radius: 8px;
+            margin-left: 12px;
+        }
+
+        .enter-button:hover {
+            background-color: #0d302b;
+        }
+    </style>
+}
