@@ -6,7 +6,6 @@ import (
 	"dl/new-web-site/pkg/logger"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/template/html/v2"
 	slogfiber "github.com/samber/slog-fiber"
 )
 
@@ -17,11 +16,7 @@ func main() {
 	logConfig := config.NewLogConfig()
 	log := logger.NewLogger(logConfig)
 
-	engine := html.New("./html", ".html")
-
-	app := fiber.New(fiber.Config{
-		Views: engine,
-	})
+	app := fiber.New()
 
 	app.Use(slogfiber.New(log))
 
