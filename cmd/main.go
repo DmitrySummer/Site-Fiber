@@ -35,3 +35,4 @@ func main() {
 		log.Error("failed to start server", "error", err)
 	}
 }
+
