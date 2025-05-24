@@ -9,18 +9,18 @@ import (
 )
 
 type PagesHandler struct {
-    router fiber.Router
-    log    *slog.Logger
+	router fiber.Router
+	log    *slog.Logger
 }
 
 func NewHandler(router fiber.Router, log *slog.Logger) *PagesHandler {
-    h := &PagesHandler{
-        router: router,
-        log:    log,
-    }
+	h := &PagesHandler{
+		router: router,
+		log:    log,
+	}
 
-    h.router.Get("/", h.pages) 
-    return h
+	h.router.Get("/", h.pages)
+	return h
 }
 
 func (h *PagesHandler) pages(c *fiber.Ctx) error {

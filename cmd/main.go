@@ -4,6 +4,7 @@ import (
 	"dl/new-web-site/config"
 	"dl/new-web-site/internal/pages"
 	"dl/new-web-site/pkg/logger"
+	"time"
 
 	"github.com/gofiber/fiber/v2"
 	slogfiber "github.com/samber/slog-fiber"
@@ -12,11 +13,16 @@ import (
 func main() {
 	config.Init()
 
-	// Создаём конфиг и логгер
 	logConfig := config.NewLogConfig()
 	log := logger.NewLogger(logConfig)
 
 	app := fiber.New()
+
+	app.Static("/public", "./public", fiber.Static{
+		Compress:      true,
+		ByteRange:     true,
+		CacheDuration: 24 * 60 * 60 * time.Second,
+	})
 
 	app.Use(slogfiber.New(log))
 
