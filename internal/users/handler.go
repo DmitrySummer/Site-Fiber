@@ -2,10 +2,13 @@ package users
 
 import (
 	tadaprot "dl/new-web-site/pkg/tadaptop"
+	"dl/new-web-site/pkg/validator"
 	"dl/new-web-site/views"
 	"dl/new-web-site/views/components"
 	"log/slog"
 
+	"github.com/gobuffalo/validate"
+	"github.com/gobuffalo/validate/validators"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -31,16 +34,25 @@ func (h *UsersHandler) getUsers(c *fiber.Ctx) error {
 }
 
 func (h *UsersHandler) createUsers(c *fiber.Ctx) error {
-	name := c.FormValue("name")
-	email := c.FormValue("email")
-	password := c.FormValue("password")
+	form := UsersCreateForm{
+		Email:    c.FormValue("email"),
+		Name:     c.FormValue("name"),
+		Password: c.FormValue("password"),
+	}
+	errors := validate.Validate(
+		&validators.EmailIsPresent{Name: "Email", Field: form.Email, Message: "Почта не задана или введена не верно"},
+	)
 
-	component := components.Notification("Регистрация прошла успешно!")
+	if len(errors.Errors) > 0 {
+		component := components.Notification(validator.FormatErrors(errors), components.NotificationFail)
+		return tadaprot.Render(c, component)
+	}
+	component := components.Notification("Регистрация прошла успешно!", components.NotificationSuccess)
 
 	h.log.Info("Register form submitted",
-		"name", name,
-		"email", email,
-		"password", password,
+		"name", form.Name,
+		"email", form.Email,
+		"password", form.Password,
 	)
 
 	return tadaprot.Render(c, component)
