@@ -1,0 +1,19 @@
+package components
+
+templ Title(text string) {
+    @TitleStyle()
+        <h1 class="title">{text}</h1>
+}
+
+templ TitleStyle() {
+    <style>
+        .title{
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 40px;
+            margin-top: 0 ;
+            color: #5ebb8d;
+            font-size: 40px ;
+        }
+    </style>
+}

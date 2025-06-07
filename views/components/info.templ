@@ -1,0 +1,47 @@
+package components
+
+templ Info() {
+    @InfoStyle()
+    <section class="info">
+        <div class="info-container">
+            <ul>
+                <li>Правила обработки персональных данных</li>
+                <li>Все права защищены 2025</li>
+                
+            </ul>
+        </div>
+    </section>
+}
+
+templ InfoStyle() {
+    <style>
+        .info {
+            padding: 20px;
+            width: 100%;
+            margin: 0 auto;
+            color: rgb(65, 39, 139);
+        }
+
+        .info h2 {
+            margin-bottom: 10px;
+            color: #8ab8a1;
+        }
+
+        .info ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Равномерно распределит */
+            gap: 15px;
+            width: 100%;
+        }
+
+        .info li {
+            background: #6d6969;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-align: center;
+            color: white;
+        }
+    </style>
+}

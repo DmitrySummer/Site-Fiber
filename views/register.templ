@@ -1,0 +1,31 @@
+package views
+
+
+import (
+    "dl/new-web-site/views/layout"
+    "dl/new-web-site/views/widgets"
+)
+
+templ Register() {
+	@layout.Layout(layout.LayoutProps{
+		Title: "Регистрация",
+	}) {
+		<main>
+			@RegisterStyle()
+			<div class="register_submit-form">
+				@widgets.RegisterForm()
+			</div>
+		</main>
+	}
+}
+
+templ RegisterStyle() {
+    <style>
+        .register_submit-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(48, 150, 137, 0.10);
+        }
+    </style>
+}
