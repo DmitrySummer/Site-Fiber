@@ -7,7 +7,7 @@ templ RegisterForm() {
     <div class="register-form">
         @components.Title("Регистрация на сайте")
         <div id="register-result"></div>
-        <form hx-post="/register" hx-trigger="submit" hx-target="#register-result" hx-swap="innerHTML swap:0.5s">
+        <form hx-post="/api/register" hx-trigger="submit" hx-target="#register-result" hx-swap="innerHTML swap:0.5s">
             <div class="register-form_inputs">
                 @components.Input(components.InputProps{
                     Name: "name",
@@ -23,7 +23,8 @@ templ RegisterForm() {
                     })
             </div>
             @components.RegisterButton(){
-                <span>Зарегистрироваться </span>
+                    <div class="register-form_submit">Зарегистрироваться</div>
+                    <div class="register-form_loader"></div>
                 }
         </form>
     </div>
@@ -48,5 +49,28 @@ templ RegisterFormStyle() {
             gap: 30px 24px;
             margin-bottom: 30px;
         }
+        .register-form_loader {
+            display: none;
+        }
+        .htmx-request .register-form_submit {
+            display: none ;
+        }
+        .htmx-request .register-form_loader {
+            display: block;
+            width: 50px;
+            padding: 8px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: #25b09b;
+            --_m: 
+                conic-gradient(#0000 10%,#000),
+                linear-gradient(#000 0 0) content-box;
+            -webkit-mask: var(--_m);
+                    mask: var(--_m);
+            -webkit-mask-composite: source-out;
+                    mask-composite: subtract;
+            animation: l3 1s infinite linear;
+        }
+        @keyframes l3 {to{transform: rotate(1turn)}}
     </style>
 }

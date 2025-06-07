@@ -70,7 +70,7 @@ func RegisterButtonStyle() templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<style>\n        .register-button {\n            height: 80px;\n            padding: 14px 28px;\n            background-color: #0c584e; \n            color: #FFFFFF; \n            border: none;\n            border-radius: 20px;\n            margin-left: 12px;\n            cursor: pointer ;\n        }\n\n        .register-button:hover {\n            background-color: #0d302b;\n        }\n    </style>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<style>\n        .register-button {\n            height: 80px;\n            padding: 14px 28px;\n            background-color: #0c584e; \n            color: #FFFFFF; \n            border: none;\n            border-radius: 20px;\n            margin-left: 12px;\n            cursor: pointer ;\n            font-size: 16px;\n        }\n\n        .register-button:hover {\n            background-color: #0d302b;\n        }\n    </style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

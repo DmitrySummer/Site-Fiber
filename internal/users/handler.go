@@ -3,9 +3,9 @@ package users
 import (
 	tadaprot "dl/new-web-site/pkg/tadaptop"
 	"dl/new-web-site/pkg/validator"
-	"dl/new-web-site/views"
 	"dl/new-web-site/views/components"
 	"log/slog"
+	"time"
 
 	"github.com/gobuffalo/validate"
 	"github.com/gobuffalo/validate/validators"
@@ -22,15 +22,9 @@ func NewHandler(router fiber.Router, log *slog.Logger) *UsersHandler {
 		router: router,
 		log:    log,
 	}
-	registerGroup := h.router.Group("/register")
-	registerGroup.Get("/", h.getUsers)
+	registerGroup := h.router.Group("/api/register")
 	registerGroup.Post("/", h.createUsers)
 	return h
-}
-
-func (h *UsersHandler) getUsers(c *fiber.Ctx) error {
-	h.log.Info("Открыта страница /register")
-	return tadaprot.Render(c, views.Register())
 }
 
 func (h *UsersHandler) createUsers(c *fiber.Ctx) error {
@@ -42,7 +36,7 @@ func (h *UsersHandler) createUsers(c *fiber.Ctx) error {
 	errors := validate.Validate(
 		&validators.EmailIsPresent{Name: "Email", Field: form.Email, Message: "Почта не задана или введена не верно"},
 	)
-
+	time.Sleep(time.Second * 1)
 	if len(errors.Errors) > 0 {
 		component := components.Notification(validator.FormatErrors(errors), components.NotificationFail)
 		return tadaprot.Render(c, component)

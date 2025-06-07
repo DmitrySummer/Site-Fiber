@@ -20,6 +20,7 @@ func NewHandler(router fiber.Router, log *slog.Logger) *PagesHandler {
 	}
 
 	h.router.Get("/", h.pages)
+	h.router.Get("/register", h.registerPage)
 	return h
 }
 
@@ -28,4 +29,8 @@ func (h *PagesHandler) pages(c *fiber.Ctx) error {
 	return tadaprot.Render(c, components)
 }
 
-
+func (h *PagesHandler) registerPage(c *fiber.Ctx) error {
+	h.log.Info("Открыта страница /register")
+	components := views.Register()
+	return tadaprot.Render(c, components)
+}

@@ -43,7 +43,7 @@ func RegisterForm() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div id=\"register-result\"></div><form hx-post=\"/register\" hx-trigger=\"submit\" hx-target=\"#register-result\" hx-swap=\"innerHTML swap:0.5s\"><div class=\"register-form_inputs\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div id=\"register-result\"></div><form hx-post=\"/api/register\" hx-trigger=\"submit\" hx-target=\"#register-result\" hx-swap=\"innerHTML swap:0.5s\"><div class=\"register-form_inputs\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -84,7 +84,7 @@ func RegisterForm() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<span>Зарегистрироваться </span>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"register-form_submit\">Зарегистрироваться</div><div class=\"register-form_loader\"></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -123,7 +123,7 @@ func RegisterFormStyle() templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<style>\n        .register-form{\n            max-width: 450px;\n            width:  100%;\n        }\n        .register-form form {\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            justify-content: center;\n        }\n        .register-form_inputs {\n            width: 100% ;\n            display: grid;\n            grid-template-columns: 1fr;\n            gap: 30px 24px;\n            margin-bottom: 30px;\n        }\n    </style>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<style>\n        .register-form{\n            max-width: 450px;\n            width:  100%;\n        }\n        .register-form form {\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            justify-content: center;\n        }\n        .register-form_inputs {\n            width: 100% ;\n            display: grid;\n            grid-template-columns: 1fr;\n            gap: 30px 24px;\n            margin-bottom: 30px;\n        }\n        .register-form_loader {\n            display: none;\n        }\n        .htmx-request .register-form_submit {\n            display: none ;\n        }\n        .htmx-request .register-form_loader {\n            display: block;\n            width: 50px;\n            padding: 8px;\n            aspect-ratio: 1;\n            border-radius: 50%;\n            background: #25b09b;\n            --_m: \n                conic-gradient(#0000 10%,#000),\n                linear-gradient(#000 0 0) content-box;\n            -webkit-mask: var(--_m);\n                    mask: var(--_m);\n            -webkit-mask-composite: source-out;\n                    mask-composite: subtract;\n            animation: l3 1s infinite linear;\n        }\n        @keyframes l3 {to{transform: rotate(1turn)}}\n    </style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
