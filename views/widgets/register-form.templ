@@ -6,7 +6,8 @@ templ RegisterForm() {
     @RegisterFormStyle()
     <div class="register-form">
         @components.Title("Регистрация на сайте")
-        <form>
+        <div id="register-result"></div>
+        <form hx-post="/register" hx-trigger="submit" hx-target="#register-result" hx-swap="innerHTML">
             <div class="register-form_inputs">
                 @components.Input(components.InputProps{
                     Name: "name",

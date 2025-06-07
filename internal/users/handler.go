@@ -3,6 +3,7 @@ package users
 import (
 	tadaprot "dl/new-web-site/pkg/tadaptop"
 	"dl/new-web-site/views"
+	"dl/new-web-site/views/components"
 	"log/slog"
 
 	"github.com/gofiber/fiber/v2"
@@ -34,11 +35,13 @@ func (h *UsersHandler) createUsers(c *fiber.Ctx) error {
 	email := c.FormValue("email")
 	password := c.FormValue("password")
 
+	component := components.Notification("Регистрация прошла успешно!")
+
 	h.log.Info("Register form submitted",
 		"name", name,
 		"email", email,
 		"password", password,
 	)
 
-	return c.SendString("Регистрация прошла успешно!")
+	return tadaprot.Render(c, component)
 }

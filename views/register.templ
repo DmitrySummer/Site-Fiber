@@ -1,17 +1,22 @@
 package views
 
 
-import "dl/new-web-site/views/widgets"
+import (
+    "dl/new-web-site/views/layout"
+    "dl/new-web-site/views/widgets"
+)
 
 templ Register() {
-	<main>
-        @RegisterStyle()
-		<div class="register_submit-form">
-            @widgets.RegisterForm()
-        
-        </div>
-        
-	</main>
+	@layout.Layout(layout.LayoutProps{
+		Title: "Регистрация",
+	}) {
+		<main>
+			@RegisterStyle()
+			<div class="register_submit-form">
+				@widgets.RegisterForm()
+			</div>
+		</main>
+	}
 }
 
 templ RegisterStyle() {
