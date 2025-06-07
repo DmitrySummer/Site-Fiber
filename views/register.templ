@@ -1,18 +1,28 @@
 package views
 
-import "dl/new-web-site/pkg/components"
+import "dl/new-web-site/views/components"
 
 templ Register() {
 	<main>
-		@components.Title("Регистрация")
-        <form method="POST" action="/register">
-            <label>Имя</label>
-            <input type="text" name="name" />
-            <label>Email</label>
-            <input type="email" name="email" />
-            <label>Пароль</label>
-            <input type="password" name="password" />
-            <button type="submit">Зарегистрироваться</button>
-        </form>
+        @RegisterStyle()
+		<div class="register_submit-form">
+            @components.Title("Регистрация")
+            @components.Input(components.InputProps{
+                Name: "name",
+                Placeholder: "Имя",
+            })
+            @components.RegisterButton(){
+                <span>Зарегистрироваться </span>
+            }
+        </div>
+        
 	</main>
+}
+
+templ RegisterStyle() {
+    <style>
+        .register_submit-form {
+            background: rgba(48, 150, 137, 0.10);
+        }
+    </style>
 }

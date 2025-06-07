@@ -1,0 +1,25 @@
+package components
+
+templ RegisterButton() {
+    @RegisterButtonStyle()
+    <button class="register-button"  >{ children... }</button>
+}
+
+templ RegisterButtonStyle() {
+    <style>
+        .register-button {
+            height: 80px;
+            padding: 14px 28px;
+            background-color: #0c584e; 
+            color: #FFFFFF; 
+            border: none;
+            border-radius: 20px;
+            margin-left: 12px;
+            cursor: pointer ;
+        }
+
+        .register-button:hover {
+            background-color: #0d302b;
+        }
+    </style>
+}

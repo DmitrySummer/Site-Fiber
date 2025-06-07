@@ -1,0 +1,38 @@
+package layout
+
+templ Header() {
+    @HeaderStyle()
+    <div class="header">
+        <div class="header-content">
+            <div class="title-wrapper">
+                { children... }
+            </div>
+            @Menu()
+        </div>
+    </div>
+}
+
+templ HeaderStyle() {
+    <style>
+        .header {
+            background: #222222;
+            padding: 20px;
+            width: 100%;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            max-width: 1290px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .title-wrapper {
+            display: flex;
+            gap: 20px; 
+            color: #5ebb8d;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+}
