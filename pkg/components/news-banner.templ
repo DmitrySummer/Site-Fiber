@@ -1,0 +1,101 @@
+package components
+
+
+templ BannersGlobalStyle() {
+    <style>
+        .news-banners-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .news-banner, .cars-banner {
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px 0;
+            width: 300px;
+            border: 1px solid #e0e0e0;
+        }
+        .news-banner {
+            background: rgb(133, 228, 190);
+        }
+        .cars-banner {
+            background: rgb(173, 216, 230);
+        }
+        .news-banner-image-container {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+        .news-banner-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .news-banner-content {
+            padding: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .news-banner-title {
+            margin: 0 0 8px 0;
+            color: #333;
+            font-size: 18px;
+        }
+        .news-banner-description {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+    </style>
+}
+
+
+templ NewsBanner(imageURL, title, description string) {
+    <div class="news-banner">
+        <div class="news-banner-image-container">
+            <img src={imageURL} alt="Новости" class="news-banner-image" />
+        </div>
+        <div class="news-banner-content">
+            <h2 class="news-banner-title">{ title }</h2>
+            <p class="news-banner-description">{ description }</p>
+        </div>
+    </div>
+}
+
+templ CarsBanner(imageURL, title, description string) {
+    <div class="cars-banner">
+        <div class="news-banner-image-container">
+            <img src={imageURL} alt="Автомобили" class="news-banner-image" />
+        </div>
+        <div class="news-banner-content">
+            <h2 class="news-banner-title">{ title }</h2>
+            <p class="news-banner-description">{ description }</p>
+        </div>
+    </div>
+}
+
+templ NewsBannerContainer() {
+    @BannersGlobalStyle()
+    <div class="news-banners-container">
+        @NewsBanner(
+            "/public/images/news.jpg",
+            "Новости",
+            "Последние новости и события",
+        )
+        @CarsBanner(
+            "/public/images/car.jpg",
+            "Как безопасно водить", 
+            "Советы по безопасному вождению",
+        )
+    </div>
+}
