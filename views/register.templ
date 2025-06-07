@@ -1,19 +1,14 @@
 package views
 
-import "dl/new-web-site/views/components"
+
+import "dl/new-web-site/views/widgets"
 
 templ Register() {
 	<main>
         @RegisterStyle()
 		<div class="register_submit-form">
-            @components.Title("Регистрация")
-            @components.Input(components.InputProps{
-                Name: "name",
-                Placeholder: "Имя",
-            })
-            @components.RegisterButton(){
-                <span>Зарегистрироваться </span>
-            }
+            @widgets.RegisterForm()
+        
         </div>
         
 	</main>
@@ -22,6 +17,9 @@ templ Register() {
 templ RegisterStyle() {
     <style>
         .register_submit-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background: rgba(48, 150, 137, 0.10);
         }
     </style>

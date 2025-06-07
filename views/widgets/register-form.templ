@@ -1,0 +1,51 @@
+package widgets 
+
+import "dl/new-web-site/views/components"
+
+templ RegisterForm() {
+    @RegisterFormStyle()
+    <div class="register-form">
+        @components.Title("Регистрация на сайте")
+        <form>
+            <div class="register-form_inputs">
+                @components.Input(components.InputProps{
+                    Name: "name",
+                    Placeholder: "Имя",
+                    })
+                @components.Input(components.InputProps{
+                    Name: "email",
+                    Placeholder: "Почта",
+                    })
+                @components.Input(components.InputProps{
+                    Name: "password",
+                    Placeholder: "Пароль",
+                    })
+            </div>
+            @components.RegisterButton(){
+                <span>Зарегистрироваться </span>
+                }
+        </form>
+    </div>
+}
+
+templ RegisterFormStyle() {
+    <style>
+        .register-form{
+            max-width: 450px;
+            width:  100%;
+        }
+        .register-form form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .register-form_inputs {
+            width: 100% ;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px 24px;
+            margin-bottom: 30px;
+        }
+    </style>
+}

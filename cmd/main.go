@@ -3,6 +3,7 @@ package main
 import (
 	"dl/new-web-site/config"
 	"dl/new-web-site/internal/pages"
+	"dl/new-web-site/internal/users"
 	"dl/new-web-site/pkg/logger"
 	"time"
 
@@ -36,6 +37,7 @@ func main() {
 	})
 
 	pages.NewHandler(app, log)
+	users.NewHandler(app, log )
 
 	if err := app.Listen(":3000"); err != nil {
 		log.Error("failed to start server", "error", err)
